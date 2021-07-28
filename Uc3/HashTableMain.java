@@ -1,0 +1,45 @@
+﻿/*********************************************************************************************************************************************************************
+ *
+ * Remove avoidable word from the phrase “Paranoids are not paranoid because they are paranoid but
+ * because they keep putting themselves deliberately into paranoid avoidable situations”
+ * - Use LinkedList to do the Hash Table Operation like here the removal of word avoidable
+ * - To do this create MyMapNode with Key Value Pair and create LinkedList of MyMapNode
+ *
+ * @author : Immanuvel Jeeva
+ * @Since  : 26-07-2021
+ *
+ *********************************************************************************************************************************************************************/
+package Uc3;
+
+public class HashTableMain {
+
+    public static void main(String[] args) {
+        HashtableImpl<String, Integer> hashImpl = new HashtableImpl();
+        String message = "Paranoids are not paranoid because they are paranoid but " +
+                "because they keep putting themselves deliberately into paranoid avoidable situations";
+
+        //Split the words when a white space comes up.
+        //Convert all the words in lowercase
+        String[] messageArray = message.toLowerCase().split(" ");
+
+        for(String word: messageArray) {
+            //Search for the word in the hashtable
+            Integer value =  hashImpl.get(word);
+            //If not found, frequency of the word StayWith 1
+            if( value == null)
+                value = 1;
+            else
+                //If found, frequency of the word increases by 1
+                value = value + 1;
+            hashImpl.add(word , value);
+            System.out.println("Value = "+value);
+        }
+        System.out.println(hashImpl);
+
+        //Remove "avoidable" from the hashtable
+        hashImpl.remove("avoidable");
+
+        //Display the hashtable
+        System.out.println(hashImpl);
+    }
+}
